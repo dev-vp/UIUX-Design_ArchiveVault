@@ -1,7 +1,16 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {getDataThunk} from '../redux/fetchData';
 
 class Header extends React.Component {
+
+  componentDidMount(){
+    this.props.getData();
+  };
+
   render() {
+    const {data} = this.props;
+    console.log('render:', data)
     return (
       <div id='header'>
         <form id='search-form'>
@@ -17,4 +26,16 @@ class Header extends React.Component {
   };
 };
 
-export default Header;
+function mapStateToProps(state){
+  return {
+    data: state.FetchDataReducer
+  };
+};
+
+function mapDispatchToProps(dispatch){
+  return {
+    getData: () => dispatch(getDataThunk())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
