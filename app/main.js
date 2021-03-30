@@ -10,6 +10,9 @@ import '../public/stylesheet.css';
 class Main extends React.Component{
   constructor(){
     super()
+    this.state = {
+      queryData: []
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,6 +23,7 @@ class Main extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     console.log('Submitted')
+    // parse the data based on date range and render to SearchResult Component
   };
 
   render(){
@@ -28,7 +32,7 @@ class Main extends React.Component{
     return (
       <div id="main">
         <Header handleSubmit={this.handleSubmit}/>
-        <SearchResult />
+        <SearchResult queryData={this.state.queryData}/>
       </div>
     )
   }

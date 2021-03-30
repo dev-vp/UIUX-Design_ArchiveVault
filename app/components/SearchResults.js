@@ -1,11 +1,16 @@
 import React from 'react';
-import {ArchiverLogo} from './index';
+import {ArchiverLogo, QueryResults} from './index';
 
 class SearchResults extends React.Component {
   render(){
+    let {queryData} = this.props;
     return (
       <div id="result-container">
-        <ArchiverLogo />
+        {
+          queryData.length < 1 ?
+          <ArchiverLogo /> :
+          <QueryResults queryData={queryData} />
+        }
       </div>
     )
   }
