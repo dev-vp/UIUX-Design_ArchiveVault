@@ -22,12 +22,12 @@ export function getDataThunk (){
   };
 };
 
-let initialState = {};
+let initialState = [];
 
 export default function FetchDataReducer (state = initialState, action){
   switch(action.type){
     case FETCH_DATA:
-      return {state, ...action.archiveData}
+      return [state, ...action.archiveData]
     default:
       return state
   };
