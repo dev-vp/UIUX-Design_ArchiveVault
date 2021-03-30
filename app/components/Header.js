@@ -17,10 +17,10 @@ class Header extends React.Component {
     const {handleSubmit} = this.props;
     return (
       <div id='header'>
-        <form id='search-form' onSubmit={handleSubmit}>
+        <form id='search-form' onSubmit={(e) => handleSubmit(e, this.state.dateRange)}>
           <img id='icon-calender' className='icons' src='assets/icon_calender.svg' />
           <input type='daterange' id='search-box' placeholder='YYYY/MM/DD' name='dateRange' onChange={e => this.handleChange(e)} />
-          <button type='button' id='search-button' onClick={handleSubmit}>
+          <button type='button' id='search-button' onClick={(e) => handleSubmit(e, this.state.dateRange)}>
             <img id='icon-search' className='icons' src='assets/icon_search.svg' />
           </button>
         </form>

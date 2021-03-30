@@ -20,10 +20,16 @@ class Main extends React.Component{
     this.props.getData();
   };
 
-  handleSubmit(e){
+  handleSubmit(e, dateRange){
     e.preventDefault();
-    console.log('Submitted')
+    console.log('Submitted! Date Range =>', dateRange);
     // parse the data based on date range and render to SearchResult Component
+    if(dateRange === ''){
+      this.setState({...this.state, queryData: []})
+    } else {
+      // queryData.filter(...);
+      this.setState({...this.state, queryData: this.props.data});
+    }
   };
 
   render(){
