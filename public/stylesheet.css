@@ -102,6 +102,8 @@ body {
 /* *********************** */
 /* RESULT-CONTAINER STYLES */
 /* *********************** */
+
+/* HEADER */
 #table-header {
   color: gray;
   font-weight: bold;
@@ -119,14 +121,50 @@ body {
   margin: 16px 5px;
 }
 
+/* COLUMNS */
 .column-to-from {
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  flex-basis: 18%;
+  flex-grow: 0;
 }
 
 .column-subject {
-  flex-grow: 3;
+  /* flex-grow: 3; */
+  flex-basis: 50%;
+  flex-grow: 0;
 }
 
 .column-date {
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  flex-basis: 14%;
+  flex-grow: 0;
+}
+
+.row-to-from {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row-subject {
+  word-wrap: break-word;
+}
+
+.row-date {
+  white-space: nowrap;
+}
+
+/* ROW */
+.email-row {
+  font-size: 12px;
+  border-bottom: 1px solid lightgray;
+}
+
+.email-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.email-info > p {
+  margin: 16px 5px;
 }
