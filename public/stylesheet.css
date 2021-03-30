@@ -1,3 +1,8 @@
+:root {
+  --column-width-to-from: 200px;
+  --column-width-subject: 500px;
+}
+
 /* ************* */
 /* GLOBAL STYLES */
 /* ************* */
@@ -80,6 +85,7 @@ body {
 
 /* *********************** */
 /* RESULT-CONTAINER STYLES */
+/*       (WHEN EMPTY)      */
 /* *********************** */
 #result-container {
   height: 85vh;
@@ -91,4 +97,36 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* *********************** */
+/* RESULT-CONTAINER STYLES */
+/* *********************** */
+#table-header {
+  color: gray;
+  font-weight: bold;
+  background-color: rgb(236, 236, 236);
+  padding: 0px 10px;
+  overflow-wrap: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#table-header > p {
+  /* display: inline-block; */
+  font-size: 12px;
+  margin: 16px 5px;
+}
+
+.column-to-from {
+  flex-grow: 1;
+}
+
+.column-subject {
+  flex-grow: 3;
+}
+
+.column-date {
+  flex-grow: 1;
 }

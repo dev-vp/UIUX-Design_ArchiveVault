@@ -7,10 +7,10 @@ class QueryResults extends React.Component {
     return (
       <div id="query-data-container" >
         <div id="table-header">
-          <p>From</p>
-          <p>To</p>
-          <p>Subject</p>
-          <p>Date</p>
+          <p className="column-to-from">From</p>
+          <p className="column-to-from">To</p>
+          <p className="column-subject">Subject</p>
+          <p className="column-date">Date</p>
         </div>
         {queryData.map(
           (singleRecord, idx) => { return <SingleEmail key={idx} email={singleRecord} />}
