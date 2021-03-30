@@ -1,22 +1,26 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {getDataThunk} from '../redux/fetchData';
 
 class Header extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      dateRange: '',
+    };
+  };
 
-  componentDidMount(){
-    this.props.getData();
+  handleChange(e){
+    e.preventDefault();
+    this.setState({[e.target.name]: e.target.value});
   };
 
   render() {
-    const {data} = this.props;
-    console.log('render:', data)
+    const {handleSubmit} = this.props;
     return (
       <div id='header'>
-        <form id='search-form'>
+        <form id='search-form' onSubmit={handleSubmit}>
           <img id='icon-calender' className='icons' src='assets/icon_calender.svg' />
-          <input type='daterange' id='search-box' placeholder='YYYY/MM/DD' />
-          <button type='submit' id='search-button'>
+          <input type='daterange' id='search-box' placeholder='YYYY/MM/DD' name='dateRange' onChange={e => this.handleChange(e)} />
+          <button type='button' id='search-button' onClick={handleSubmit}>
             <img id='icon-search' className='icons' src='assets/icon_search.svg' />
           </button>
         </form>
@@ -26,16 +30,4 @@ class Header extends React.Component {
   };
 };
 
-function mapStateToProps(state){
-  return {
-    data: state.FetchDataReducer
-  };
-};
-
-function mapDispatchToProps(dispatch){
-  return {
-    getData: () => dispatch(getDataThunk())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
