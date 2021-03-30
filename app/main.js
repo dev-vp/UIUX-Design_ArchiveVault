@@ -1,11 +1,14 @@
 import React from 'react';
-import {Header} from './components';
+import {Header, SearchResult} from './components';
 import '../public/stylesheet.css';
 
 export default class Main extends React.Component{
   render(){
     return (
-      <Header />
+      <div id="main">
+        <Header />
+        <SearchResult />
+      </div>
     )
   }
 };
