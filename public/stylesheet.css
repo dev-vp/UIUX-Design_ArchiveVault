@@ -1,0 +1,79 @@
+/* ************* */
+/* GLOBAL STYLES */
+/* ************* */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  padding: 25px 30px;
+}
+
+.icons {
+  width: 18px;
+}
+
+/* ************* */
+/* HEADER STYLES */
+/* ************* */
+#header {
+  border-bottom: 1px solid lightgray;
+}
+
+#search-form {
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  width: 220px;
+  height: 30px;
+  text-align: center;
+}
+
+#search-box {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  margin: 0px;
+  width: 11em;
+  height: 90%;
+  background-color: transparent;
+  padding-left: 5px;
+  font-size: 12px;
+}
+
+#search-box::placeholder {
+  color: lightgray;
+}
+
+#icon-calender {
+  float: left;
+  margin: 5.5px 0px 5.5px 8px;
+}
+
+#search-button {
+  float: right;
+  margin: 0px;
+  height: 100%;
+  border: none;
+  border-left: 1px solid lightgray;
+  outline: none;
+  width: 2.8em;
+}
+
+#search-button:hover {
+  background-color: rgb(235, 233, 233);
+}
+
+#icon-search {
+  width: 13px;
+}
+
+#result-counter {
+  font-size: 11px;
+  font-weight: bold;
+  color: gray;
+  margin-bottom: 3px;
+}
+
+#result-counter > span {
+  font-size: 15px;
+}
