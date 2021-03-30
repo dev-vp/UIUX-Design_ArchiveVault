@@ -3,7 +3,7 @@ import {ArchiverLogo, QueryResults} from './index';
 
 class SearchResults extends React.Component {
   render(){
-    let {queryData} = this.props;
+    const {queryData} = this.props;
     return (
       <div id="result-container">
         {
