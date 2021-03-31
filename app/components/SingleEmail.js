@@ -5,16 +5,19 @@ class SingleEmail extends React.Component {
   formatDate(emailDate){
     const currDate = new Date();
     const diff = (currDate.getTime() - emailDate.getTime()) / 86400000; //(1000*60*60*24)
-    console.log(diff)
+
+    // If less than a day, display 'hour:minute'
     if(diff < 1){
-      //calculate hours & minutes
-    }
+      return `${(emailDate.getHours()).toString().padStart(2,"0")}:${emailDate.getMinutes()}`
+    };
+    // If current year, display 'month day'
     if(currDate.getFullYear() === emailDate.getFullYear()){
       //display only month and day if current year
       const monthAbbreviations = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
       const monthName = monthAbbreviations[emailDate.getMonth()];
       return `${monthName} ${(emailDate.getDate()).toString().padStart(2, "0")}`
-    }
+    };
+    // else display in YYYY/MM/DD format
     return `${emailDate.getFullYear()}/${(emailDate.getMonth()+1).toString().padStart(2, "0")}/${(emailDate.getDate()).toString().padStart(2, "0")}`
   }
 
