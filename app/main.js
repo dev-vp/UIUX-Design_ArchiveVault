@@ -32,9 +32,6 @@ class Main extends React.Component{
 
   /***** COLUMN FILTER *****/
   columnFilter(e){
-    console.log('Clicked. Filter Function Triggered.')
-    console.log('Target:', e.target.id)
-    console.log('this context', this.state.queryData) //undefined
     if(e.target.id === 'to'){
       this.state.filterTo === 'asc' ?
       this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
@@ -57,7 +54,7 @@ class Main extends React.Component{
       this.state.filterDate === 'asc' ?
       this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
       this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'asc'});
-      this.state.filterDate === 'asc' ? this.state.queryData.sort((a,b) => sortDate(a,b,'asc')) : this.state.queryData.sort((a,b) => sortDate(a,b,'desc'))
+      this.state.filterDate === 'asc' ? this.state.queryData.sort((a,b) => sortDate(a,b,'desc')) : this.state.queryData.sort((a,b) => sortDate(a,b,'asc'));
     };
   };
 
