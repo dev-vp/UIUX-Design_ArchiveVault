@@ -75,7 +75,7 @@ class Main extends React.Component{
         }))
       );
       endDate = new Date(
-        ...(queryInput[0].split('/').map((x, idx) => {
+        ...(queryInput[1].split('/').map((x, idx) => {
           if(idx === 1){
             return parseInt(x) - 1;
           } else {
@@ -86,25 +86,24 @@ class Main extends React.Component{
       //Check for valid date range
       /*
       ! fix this
-      */
       if(startDate.getTime() > endDate.getTime()){
         alert(`Invalid Date Range. Start Date: ${startDate}. End Date: ${endDate}`);
         return;
       };
-      /*
-      ! filter for date range queries, setState, and then break
       */
+
+      let filteredDataRange = this.state.archiveData.filter((email) =>
+      startDate.getTime() <= email.Date.getTime() &&
+      endDate.getTime() >= email.Date.getTime()
+      );
+
+      this.setState({...this.state, queryData: filteredDataRange});
     };
 
     console.log(startDate,'-',endDate)
-
-    // TEMPORARY DEV FALL BACK TO SHOW ALL DATA
-    // this.setState({...this.state, queryData: this.props.data});
   };
 
   render(){
-    // let {data} = this.props;
-    // console.log(data);
     return (
       <div id="main">
         <Header handleSubmit={this.handleSubmit} queryData={this.state.queryData}/>
