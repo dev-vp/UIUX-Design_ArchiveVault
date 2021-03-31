@@ -24,10 +24,16 @@ class Main extends React.Component{
 
   handleSubmit(e, dateRange){
     e.preventDefault();
-    const currDate = new Date();
     const validFormat = new RegExp('....\/..\/..', 'g');
     const queryInput = dateRange.match(validFormat);
     let startDate, endDate;
+
+    // if(dateRange.match(/....\/.\/./g).length > 0){
+    //   dateRange = dateRange.match(/....\/.\/./g).map((date) => {
+    //     date.split('/').forEach((x,i) => {i<0? x.padStart(2,"0"): x});
+    //     return date;
+    //   })
+    // };
 
     if(dateRange === 'ALL' || dateRange === 'all' || dateRange === 'All'){
       this.setState({...this.state, queryData: this.props.data});
@@ -37,7 +43,9 @@ class Main extends React.Component{
     // Empty Query & Invalid Date Formats
     if(dateRange === '' || !validFormat.test(dateRange)){
       this.setState({...this.state, queryData: []});
-      alert('Please use a valid date format (YYYY/MM/DD).');
+      alert(`Please use a valid date format.
+      (YYYY/MM/DD); or
+      (YYYY/MM/DD - YYYY/MM/DD)`);
       return;
     };
 
@@ -84,13 +92,12 @@ class Main extends React.Component{
         }))
       );
       //Check for valid date range
-      /*
-      ! fix this
-      if(startDate.getTime() > endDate.getTime()){
-        alert(`Invalid Date Range. Start Date: ${startDate}. End Date: ${endDate}`);
-        return;
-      };
-      */
+     if(startDate.getTime() > endDate.getTime()){
+       alert(`Invalid Date Range.
+       Start Date: ${startDate.getFullYear()}/${startDate.getMonth()}/${startDate.getDate()} -
+       End Date: ${endDate.getFullYear()}/${endDate.getMonth()}/${endDate.getDate()}`);
+       return;
+     };
 
       let filteredDataRange = this.state.archiveData.filter((email) =>
       startDate.getTime() <= email.Date.getTime() &&
