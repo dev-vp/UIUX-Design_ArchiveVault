@@ -22,14 +22,57 @@ class Main extends React.Component{
 
   handleSubmit(e, dateRange){
     e.preventDefault();
-    console.log('Submitted! Date Range =>', dateRange);
-    // parse the data based on date range and render to SearchResult Component
-    if(dateRange === ''){
-      this.setState({...this.state, queryData: []})
-    } else {
-      // queryData.filter(...);
-      this.setState({...this.state, queryData: this.props.data});
-    }
+    const validFormat = new RegExp('....\/..\/..', 'g');
+    const queryInput = dateRange.match(validFormat);
+    let startDate, endDate;
+
+    // Empty Query & Invalid Date Formats
+    if(dateRange === '' || !validFormat.test(dateRange)){
+      this.setState({...this.state, queryData: []});
+      alert('Please use a valid date format (YYYY/MM/DD).');
+    };
+
+    // Single Date Queries
+    if(queryInput.length === 1){
+      startDate = new Date(
+        ...(queryInput[0].split('/').map((x, idx) => {
+            if(idx === 1){
+              return parseInt(x) - 1;
+            } else {
+              return parseInt(x);
+            };
+          }))
+        );
+      endDate = undefined;
+    };
+
+    // Date Range Queries
+    if(queryInput.length === 2){
+      startDate = new Date(
+        ...(queryInput[0].split('/').map((x, idx) => {
+          if(idx === 1){
+            return parseInt(x) - 1;
+          } else {
+            return parseInt(x);
+          };
+        }))
+      );
+      endDate = new Date(
+        ...(queryInput[0].split('/').map((x, idx) => {
+          if(idx === 1){
+            return parseInt(x) - 1;
+          } else {
+            return parseInt(x);
+          };
+        }))
+      );
+    };
+
+    console.log(startDate,'-',endDate)
+
+    // Filter Data Based on Query Date(s)
+    // queryData.filter(...);
+    this.setState({...this.state, queryData: this.props.data});
   };
 
   render(){
