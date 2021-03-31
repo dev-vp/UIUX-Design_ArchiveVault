@@ -14,7 +14,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const {handleSubmit} = this.props;
+    const {handleSubmit, queryData} = this.props;
     return (
       <div id='header'>
         <form id='search-form' onSubmit={(e) => handleSubmit(e, this.state.dateRange)}>
@@ -24,7 +24,7 @@ class Header extends React.Component {
             <img id='icon-search' className='icons' src='assets/icon_search.svg' />
           </button>
         </form>
-        <p id='result-counter'>Results: <span>0</span>mail(s)</p>
+        <p id='result-counter'>Results: <span>{queryData.length}</span>mail(s)</p>
       </div>
     );
   };
