@@ -1,6 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {getDataThunk} from './redux/fetchData';
+import sortChar from '../utils/sortChar';
+import sortDate from '../utils/sortDate';
 import {
   Header,
   SearchResult
@@ -12,7 +13,11 @@ class Main extends React.Component{
     super()
     this.state = {
       queryData: [],
-      archiveData: []
+      archiveData: [],
+      filterTo: 'desc',
+      filterFrom: 'desc',
+      filterSubject: 'desc',
+      filterDate: 'asc'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -22,18 +27,38 @@ class Main extends React.Component{
     this.setState({...this.state, archiveData: this.props.data});
   };
 
+  columnFilter(e){
+    if(e.target.name === 'to'){
+      this.state.filterTo === 'asc' ?
+      this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
+      this.setState({...this.state, filterTo: 'asc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'});
+      this.state.filterTo === 'asc' ? this.queryData.sort(sortChar(a,b,'asc')) : this.queryData.sort(sortChar(a,b,'desc'))
+    };
+    if(e.target.name === 'from'){
+      this.state.filterFrom === 'asc' ?
+      this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
+      this.setState({...this.state, filterTo: 'desc', filterFrom: 'asc', filterSubject: 'desc', filterDate: 'desc'});
+      this.state.filterFrom === 'asc' ? this.queryData.sort(sortChar(a,b,'asc')) : this.queryData.sort(sortChar(a,b,'desc'))
+    };
+    if(e.target.name === 'subject'){
+      this.state.filterSubject === 'asc' ?
+      this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
+      this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'asc', filterDate: 'desc'});
+      this.state.filterSubject === 'asc' ? this.queryData.sort(sortChar(a,b,'asc')) : this.queryData.sort(sortChar(a,b,'desc'))
+    };
+    if(e.target.name === 'date'){
+      this.state.filterDate === 'asc' ?
+      this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
+      this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'asc'});
+      this.state.filterSubject === 'asc' ? this.queryData.sort(sortDate(a,b,'asc')) : this.queryData.sort(sortDate(a,b,'desc'))
+    };
+  };
+
   handleSubmit(e, dateRange){
     e.preventDefault();
     const validFormat = new RegExp('....\/..\/..', 'g');
     const queryInput = dateRange.match(validFormat);
     let startDate, endDate;
-
-    // if(dateRange.match(/....\/.\/./g).length > 0){
-    //   dateRange = dateRange.match(/....\/.\/./g).map((date) => {
-    //     date.split('/').forEach((x,i) => {i<0? x.padStart(2,"0"): x});
-    //     return date;
-    //   })
-    // };
 
     if(dateRange === 'ALL' || dateRange === 'all' || dateRange === 'All'){
       this.setState({...this.state, queryData: this.props.data});
