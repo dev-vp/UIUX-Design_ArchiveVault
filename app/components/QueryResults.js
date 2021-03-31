@@ -37,6 +37,8 @@ class QueryResults extends React.Component {
           <img src="assets/icon_arrow01.svg" className="filter-icons rotate-180" id="subject-desc" hidden={true}/>
           </p>
 
+          <div className="column-attachment"></div>
+
           <p
             id="date"
             className="column-date toggle-color"

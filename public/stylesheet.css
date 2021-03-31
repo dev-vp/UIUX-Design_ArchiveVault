@@ -136,6 +136,11 @@ body {
   flex-grow: 0;
 }
 
+.column-attachment {
+  flex-basis: 5%;
+  flex-grow: 0;
+}
+
 .column-date {
   /* flex-grow: 1; */
   flex-basis: 14%;
@@ -185,4 +190,14 @@ body {
 
 .rotate-180 {
   transform: scaleY(-1);
+}
+
+/* Clip Icon */
+.column-attachment {
+  display: flex;
+  align-items: center;
+}
+
+.clip {
+  width: 12px;
 }

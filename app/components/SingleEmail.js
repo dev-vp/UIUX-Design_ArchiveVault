@@ -29,6 +29,9 @@ class SingleEmail extends React.Component {
           <p className="column-to-from row-to-from">{email.To}</p>
           <p className="column-to-from row-to-from">{email.From}</p>
           <p className="column-subject row-subject">{email.Subject}</p>
+          <div className="column-attachment">{
+          email.Attachment ? <img className="clip" src="assets/icon_clip.svg"/>: ''
+          }</div>
           <p className="column-date row-date">{this.formatDate(Date)}</p>
         </div>
       </div>
