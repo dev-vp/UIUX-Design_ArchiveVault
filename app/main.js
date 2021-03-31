@@ -18,7 +18,7 @@ class Main extends React.Component{
       filterTo: 'desc',
       filterFrom: 'desc',
       filterSubject: 'desc',
-      filterDate: 'asc'
+      filterDate: 'desc'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.columnFilter = this.columnFilter.bind(this);
@@ -26,9 +26,11 @@ class Main extends React.Component{
 
   async componentDidMount(){
     await this.props.getData();
-    this.setState({...this.state, archiveData: this.props.data});
+    let defaultView = await this.props.data.sort((a,b) => sortDate(a,b,'desc'));
+    this.setState({...this.state, archiveData: defaultView});
   };
 
+  /***** COLUMN FILTER *****/
   columnFilter(e){
     console.log('Clicked. Filter Function Triggered.')
     console.log('Target:', e.target.id)
@@ -59,6 +61,7 @@ class Main extends React.Component{
     };
   };
 
+  /***** QUERY SUBMIT HANDLER *****/
   handleSubmit(e, dateRange){
     e.preventDefault();
     const validFormat = new RegExp('....\/..\/..', 'g');
