@@ -26,8 +26,9 @@ class SingleEmail extends React.Component {
     return (
       <div className="email-row">
         <div className="email-info">
-          <p className="column-to-from row-to-from">{email.To}</p>
-          <p className="column-to-from row-to-from">{email.From}</p>
+          <img className="icon-mail" src="assets/icon_mail_sp.svg" />
+          <p className="column-to-from row-to-from row-to">{email.To}</p>
+          <p className="column-to-from row-to-from row-from">{email.From}</p>
           <p className="column-subject row-subject">{email.Subject}</p>
           <div className="column-attachment">{
           email.Attachment ? <img className="clip" src="assets/icon_clip.svg"/>: ''
