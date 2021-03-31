@@ -18,6 +18,10 @@ body {
   width: 18px;
 }
 
+.icon-mail {
+  display: none;
+}
+
 /* ************* */
 /* HEADER STYLES */
 /* ************* */
@@ -200,4 +204,79 @@ body {
 
 .clip {
   width: 12px;
+}
+
+/* *************** */
+/* MOBILE / TABLET */
+/* *************** */
+@media only screen and (max-width:680px){
+  #table-header > p {
+    flex: none;
+  }
+
+  #table-header > p:not(:nth-last-child(1)){
+    border-right: 1px solid black;
+    padding-right: 5px;
+    margin-right: 0px;
+  }
+
+  .column-attachment {
+    display: none;
+  }
+
+  .email-row {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .icon-mail {
+    display: initial;
+    width: 10px;
+    position: absolute;
+    margin: 9px 8px;
+  }
+
+  .email-info {
+    flex-direction: column;
+  }
+
+  .email-info > p {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+
+  .row-to-from {
+    margin-left: 28px !important;
+    font-size: 11px;
+  }
+
+  .row-from {
+    font-weight: bold;
+    order: -10;
+    flex-basis: auto;
+    width: 50%;
+  }
+
+  .row-to {
+    flex-basis: auto;
+    width: 50%;
+  }
+
+  .row-date {
+    position: absolute;
+    right: 50px;
+  }
+
+  .clip {
+    position: absolute;
+    right: 55px;
+    margin-top: 50px;
+  }
+
+  .row-subject {
+    flex-basis: auto;
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
