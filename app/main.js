@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {getDataThunk} from './redux/fetchData';
 import sortChar from '../utils/sortChar';
 import sortDate from '../utils/sortDate';
@@ -20,6 +21,7 @@ class Main extends React.Component{
       filterDate: 'asc'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.columnFilter = this.columnFilter.bind(this);
   }
 
   async componentDidMount(){
@@ -28,29 +30,32 @@ class Main extends React.Component{
   };
 
   columnFilter(e){
-    if(e.target.name === 'to'){
+    console.log('Clicked. Filter Function Triggered.')
+    console.log('Target:', e.target.id)
+    console.log('this context', this.state.queryData) //undefined
+    if(e.target.id === 'to'){
       this.state.filterTo === 'asc' ?
       this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
       this.setState({...this.state, filterTo: 'asc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'});
-      this.state.filterTo === 'asc' ? this.queryData.sort(sortChar(a,b,'asc')) : this.queryData.sort(sortChar(a,b,'desc'))
+      this.state.filterTo === 'asc' ? this.state.queryData.sort((a,b) => sortChar(a,b,'asc')) : this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
     };
-    if(e.target.name === 'from'){
+    if(e.target.id === 'from'){
       this.state.filterFrom === 'asc' ?
       this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
       this.setState({...this.state, filterTo: 'desc', filterFrom: 'asc', filterSubject: 'desc', filterDate: 'desc'});
-      this.state.filterFrom === 'asc' ? this.queryData.sort(sortChar(a,b,'asc')) : this.queryData.sort(sortChar(a,b,'desc'))
+      this.state.filterFrom === 'asc' ? this.state.queryData.sort((a,b) => sortChar(a,b,'asc')) : this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
     };
-    if(e.target.name === 'subject'){
+    if(e.target.id === 'subject'){
       this.state.filterSubject === 'asc' ?
       this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
       this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'asc', filterDate: 'desc'});
-      this.state.filterSubject === 'asc' ? this.queryData.sort(sortChar(a,b,'asc')) : this.queryData.sort(sortChar(a,b,'desc'))
+      this.state.filterSubject === 'asc' ? this.state.queryData.sort((a,b) => sortChar(a,b,'asc')) : this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
     };
-    if(e.target.name === 'date'){
+    if(e.target.id === 'date'){
       this.state.filterDate === 'asc' ?
       this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
       this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'asc'});
-      this.state.filterSubject === 'asc' ? this.queryData.sort(sortDate(a,b,'asc')) : this.queryData.sort(sortDate(a,b,'desc'))
+      this.state.filterSubject === 'asc' ? this.state.queryData.sort((a,b) => sortDate(a,b,'asc')) : this.state.queryData.sort((a,b) => sortDate(a,b,'desc'))
     };
   };
 
@@ -139,7 +144,7 @@ class Main extends React.Component{
     return (
       <div id="main">
         <Header handleSubmit={this.handleSubmit} queryData={this.state.queryData}/>
-        <SearchResult queryData={this.state.queryData}/>
+        <SearchResult queryData={this.state.queryData} columnFilter={this.columnFilter}/>
       </div>
     )
   }

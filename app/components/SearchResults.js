@@ -3,13 +3,13 @@ import {ArchiverLogo, QueryResults} from './index';
 
 class SearchResults extends React.Component {
   render(){
-    const {queryData} = this.props;
+    const {queryData, columnFilter} = this.props;
     return (
       <div id="result-container">
         {
           queryData.length < 1 ?
           <ArchiverLogo /> :
-          <QueryResults queryData={queryData} />
+          <QueryResults queryData={queryData} columnFilter={columnFilter}/>
         }
       </div>
     )
