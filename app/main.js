@@ -57,7 +57,7 @@ class Main extends React.Component{
       this.state.filterDate === 'asc' ?
       this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
       this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'asc'});
-      this.state.filterSubject === 'asc' ? this.state.queryData.sort((a,b) => sortDate(a,b,'asc')) : this.state.queryData.sort((a,b) => sortDate(a,b,'desc'))
+      this.state.filterDate === 'asc' ? this.state.queryData.sort((a,b) => sortDate(a,b,'asc')) : this.state.queryData.sort((a,b) => sortDate(a,b,'desc'))
     };
   };
 
