@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {getDataThunk} from './redux/fetchData';
 import sortChar from '../utils/sortChar';
 import sortDate from '../utils/sortDate';
+import toggleFilterIcon from '../utils/toggleFilterIcon';
 import {
   Header,
   SearchResult
@@ -33,28 +34,64 @@ class Main extends React.Component{
   /***** COLUMN FILTER *****/
   columnFilter(e){
     if(e.target.id === 'to'){
-      this.state.filterTo === 'asc' ?
-      this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
-      this.setState({...this.state, filterTo: 'asc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'});
-      this.state.filterTo === 'asc' ? this.state.queryData.sort((a,b) => sortChar(a,b,'asc')) : this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
+      if(this.state.filterTo === 'asc'){
+        this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'})
+        this.state.queryData.sort((a,b) => sortChar(a,b,'asc'))
+        toggleFilterIcon(e, 'asc')
+      } else {
+        this.setState({...this.state, filterTo: 'asc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'})
+        this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
+        toggleFilterIcon(e, 'desc')
+      }
+      // this.state.filterTo === 'asc' ?
+      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
+      // this.setState({...this.state, filterTo: 'asc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'});
+      // this.state.filterTo === 'asc' ? this.state.queryData.sort((a,b) => sortChar(a,b,'asc')) : this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
     };
     if(e.target.id === 'from'){
-      this.state.filterFrom === 'asc' ?
-      this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
-      this.setState({...this.state, filterTo: 'desc', filterFrom: 'asc', filterSubject: 'desc', filterDate: 'desc'});
-      this.state.filterFrom === 'asc' ? this.state.queryData.sort((a,b) => sortChar(a,b,'asc')) : this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
+      if(this.state.filterFrom === 'asc'){
+        this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'})
+        this.state.queryData.sort((a,b) => sortChar(a,b,'asc'))
+        toggleFilterIcon(e, 'asc')
+      } else {
+        this.setState({...this.state, filterTo: 'desc', filterFrom: 'asc', filterSubject: 'desc', filterDate: 'desc'})
+        this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
+        toggleFilterIcon(e, 'desc')
+      }
+      // this.state.filterFrom === 'asc' ?
+      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
+      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'asc', filterSubject: 'desc', filterDate: 'desc'});
+      // this.state.filterFrom === 'asc' ? this.state.queryData.sort((a,b) => sortChar(a,b,'asc')) : this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
     };
     if(e.target.id === 'subject'){
-      this.state.filterSubject === 'asc' ?
-      this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
-      this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'asc', filterDate: 'desc'});
-      this.state.filterSubject === 'asc' ? this.state.queryData.sort((a,b) => sortChar(a,b,'asc')) : this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
+      if(this.state.filterSubject === 'asc'){
+        this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'})
+        this.state.queryData.sort((a,b) => sortChar(a,b,'asc'))
+        toggleFilterIcon(e, 'asc')
+      } else {
+        this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'asc', filterDate: 'desc'})
+        this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
+        toggleFilterIcon(e, 'desc')
+      }
+      // this.state.filterSubject === 'asc' ?
+      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
+      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'asc', filterDate: 'desc'});
+      // this.state.filterSubject === 'asc' ? this.state.queryData.sort((a,b) => sortChar(a,b,'asc')) : this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
     };
     if(e.target.id === 'date'){
-      this.state.filterDate === 'asc' ?
-      this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
-      this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'asc'});
-      this.state.filterDate === 'asc' ? this.state.queryData.sort((a,b) => sortDate(a,b,'desc')) : this.state.queryData.sort((a,b) => sortDate(a,b,'asc'));
+      if(this.state.filterDate === 'asc'){
+        this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'})
+        this.state.queryData.sort((a,b) => sortDate(a,b,'desc'))
+        toggleFilterIcon(e, 'asc')
+      } else {
+        this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'asc'})
+        this.state.queryData.sort((a,b) => sortDate(a,b,'asc'))
+        toggleFilterIcon(e, 'desc')
+      }
+      // this.state.filterDate === 'asc' ?
+      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
+      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'asc'});
+      // this.state.filterDate === 'asc' ? this.state.queryData.sort((a,b) => sortDate(a,b,'desc')) : this.state.queryData.sort((a,b) => sortDate(a,b,'asc'));
     };
   };
 
