@@ -1,4 +1,5 @@
-# README
+# README.md
+---
 
 - [REPORTS.md](https://github.com/dev-vp/2021-hennge-challenge/blob/main/REPORT.md)
 - [IMPROVEMENTS.md](https://github.com/dev-vp/2021-hennge-challenge/blob/main/IMPROVEMENTS.md)
