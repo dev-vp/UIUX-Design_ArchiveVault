@@ -6,7 +6,7 @@ Based on the mock up provided, there appears to be 2 main sections:
 - Query Result Section
 Therefore in terms of my UI implementation, each section was designed separately. The "Header Section" was fairly straight forward, however the "Query Result Section" required additional planning. Although this section could be designed with either `table` elements and/or `grid` style, these were not ideal in the long run due to the mockup's mobile view. The DOM structure needed to accomadate the changing UI (i.e. column-wrapping, element reordering, etc.). As a result, I decided to proceed with `flex box`, thus ensuring more versitle customization necessary for mobile responsiveness down the lines.
 
-Upon completing the UI to mirror that of the mockup, I implemented a randomized mock data generator (`utils/mockData.js`) to not only have data for development/testing purposes, but to also simulate JSON retrieval from an API call to a database.
+Upon completing the UI to mirror that of the mockup, I implemented a randomized mock data generator (`utils/mockData.js`) to not only have data for development/testing purposes, but to also simulate JSON retrieval from an API call to a database (via a redux thunk).
 
 The generated data was then utilized for testing/designing the following features and functionalities:
 - Searchable with Single Date and Date Range Queries
