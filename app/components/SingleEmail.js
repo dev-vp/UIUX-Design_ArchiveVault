@@ -47,6 +47,7 @@ class SingleEmail extends React.Component {
           email.Attachment ? <img className="clip" src="assets/icon_clip.svg"/>: ''
           }</div>
           <p className="column-date row-date">{this.formatDate(Date)}</p>
+          <img className="email-row-arrow" src="assets/icon_arrow02.svg" />
         </div>
         <EmailBody id={`email-body-${idx}`} body={email.Body}/>
       </div>

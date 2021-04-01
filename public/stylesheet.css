@@ -219,6 +219,11 @@ body {
   width: 12px;
 }
 
+.email-row-arrow {
+  display: none;
+  width: 5px;;
+}
+
 /* *************** */
 /* MOBILE / TABLET */
 /* *************** */
@@ -291,5 +296,12 @@ body {
     width: 80%;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .email-row-arrow {
+    display: initial;
+    position: absolute;
+    right: 45px;
+    margin-top: 4px;
   }
 }
