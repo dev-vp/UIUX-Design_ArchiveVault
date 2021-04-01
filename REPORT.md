@@ -26,4 +26,4 @@ And finally, media queries were added and styled accordingly to the mockup.
 
 
 ## Mission 3: Indicate UI parts that can be improved
-*(Please refer to the `IMPROVEMENTS.md` file.)*
+*(Please refer to the [IMPROVEMENTS.md](https://github.com/dev-vp/2021-hennge-challenge/blob/main/IMPROVEMENTS.md) file.)*
