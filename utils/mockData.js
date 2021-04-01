@@ -38,7 +38,8 @@ function generateMockData (num){
         To: `${characterGenerator(10)}@email.com`,
         Subject: `[${characterGenerator(8, 'uppercase')}] Nostrud duis cupidatat laboris veniam anim.`,
         Date: generateDate(),
-        Attachment: (generateRandomNum(0,8) < generateRandomNum(0,10))
+        Attachment: (generateRandomNum(0,8) < generateRandomNum(0,10)),
+        Body: 'Aliqua do veniam voluptate mollit velit minim ipsum qui. Eiusmod mollit excepteur deserunt do. Minim duis amet proident cupidatat eiusmod do. Nulla sunt esse eu sunt aliquip in eu non duis nostrud adipisicing fugiat anim. Culpa do cillum mollit enim irure velit tempor labore dolor excepteur. Voluptate et velit tempor consectetur ex. Fugiat duis consequat esse nostrud sunt commodo commodo eiusmod quis adipisicing amet laborum incididunt quis.'
       }
     )
   };

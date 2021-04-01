@@ -50,7 +50,7 @@ class QueryResults extends React.Component {
           </p>
         </div>
         {queryData.map(
-          (singleRecord, idx) => { return <SingleEmail key={idx} email={singleRecord} />}
+          (singleRecord, idx) => { return <SingleEmail key={idx} idx={idx} email={singleRecord} />}
         )}
       </div>
     )

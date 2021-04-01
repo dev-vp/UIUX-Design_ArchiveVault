@@ -186,6 +186,19 @@ body {
   margin: 16px 5px;
 }
 
+/* Email Body */
+.email-body-preview {
+  background-color: white;
+  color: black;
+  padding: 10px 30px;
+  margin: 8px;
+  border: 1px solid gray;
+}
+.email-body-preview:hover {
+  background-color: white;
+  color: black;
+}
+
 /* Filter Icons */
 .filter-icons {
   width: 8px;

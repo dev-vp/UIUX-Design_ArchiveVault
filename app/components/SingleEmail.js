@@ -1,4 +1,5 @@
 import React from 'react';
+import {EmailBody} from './index';
 
 class SingleEmail extends React.Component {
 
@@ -19,12 +20,24 @@ class SingleEmail extends React.Component {
     };
     // else display in YYYY/MM/DD format
     return `${emailDate.getFullYear()}/${(emailDate.getMonth()+1).toString().padStart(2, "0")}/${(emailDate.getDate()).toString().padStart(2, "0")}`
-  }
+  };
+
+  toggleBody(e,id){
+    e.preventDefault();
+    let css_id = `email-body-${id}`
+    let targetNode = document.getElementById(css_id);
+
+    if(targetNode.hidden){
+      targetNode.hidden = false;
+    } else {
+      targetNode.hidden = true;
+    }
+  };
 
   render(){
-    const {email, email:{Date}} = this.props;
+    const {idx, email, email:{Date}} = this.props;
     return (
-      <div className="email-row">
+      <div className="email-row" onClick={(e) => this.toggleBody(e, idx)}>
         <div className="email-info">
           <img className="icon-mail" src="assets/icon_mail_sp.svg" />
           <p className="column-to-from row-to-from row-to">{email.To}</p>
@@ -35,6 +48,7 @@ class SingleEmail extends React.Component {
           }</div>
           <p className="column-date row-date">{this.formatDate(Date)}</p>
         </div>
+        <EmailBody id={`email-body-${idx}`} body={email.Body}/>
       </div>
     )
   }
