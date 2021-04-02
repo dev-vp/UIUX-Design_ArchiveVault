@@ -27,8 +27,8 @@ class Header extends React.Component {
       <div id='header'>
         <form id='search-form' onSubmit={(e) => handleSubmit(e, this.state.dateRange)}>
           <img id='icon-calender' className='icons' src='assets/icon_calender.svg' />
-          <input type='date' className='search-box' placeholder='YYYY/MM/DD' name='startDate' onChange={e => this.handleChange(e)} />
-          <input type='date' className='search-box' placeholder='YYYY/MM/DD' name='endDate' onChange={e => this.handleChange(e)} />
+          <input id="startDate" type='date' className='search-box' placeholder='YYYY/MM/DD' name='startDate' onChange={e => this.handleChange(e)} />
+          <input id="endDate" type='date' className='search-box' placeholder='YYYY/MM/DD' name='endDate' onChange={e => this.handleChange(e)} />
           <button type='button' id='search-button' onClick={(e) => handleSubmit(e, this.state.dateRange)}>
             <img id='icon-search' className='icons' src='assets/icon_search.svg' />
           </button>

@@ -41,18 +41,28 @@ body {
 .search-box {
   border-radius: 5px;
   border: none;
-  outline: none;
-  margin: 0px;
+  /* outline: none; */
+  /* margin: 0px; */
   /* width: 5em; */
   width: 9.5em;
-  height: 90%;
-  background-color: transparent;
+  height: 95%;
+  /* background-color: transparent; */
   padding-left: 5px;
   font-size: 12px;
+  margin-top: .5px;
 }
 
 .search-box::placeholder {
   color: lightgray;
+}
+
+#startDate {
+  background-color: rgba(0, 128, 0, 0.098);
+  margin-right: 3px;
+}
+
+#endDate {
+  background-color: rgba(255, 0, 0, 0.098);
 }
 
 /* .search-box::-webkit-inner-spin-button,
