@@ -23,7 +23,7 @@ function characterGenerator (numOfCharacter, letterCase){
 };
 
 function generateDate (startDate, endDate) {
-  let start = startDate || new Date(2020, 0, 1);
+  let start = startDate || new Date(2018, 0, 1);
   let end = endDate || new Date();
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 };

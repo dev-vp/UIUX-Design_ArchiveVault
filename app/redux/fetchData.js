@@ -14,7 +14,7 @@ function fetchActionCreator (archiveData){
 export function getDataThunk (){
   return async dispatch => {
     try {
-      const response = await generateMockData(50);
+      const response = await generateMockData(200);
       dispatch(fetchActionCreator(response));
     } catch (error) {
       console.error(error);
