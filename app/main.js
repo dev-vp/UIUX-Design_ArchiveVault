@@ -108,13 +108,13 @@ class Main extends React.Component{
     }
 
     // Empty Query & Invalid Date Formats
-    if(dateRange === '' || !validFormat.test(dateRange)){
-      this.setState({...this.state, queryData: []});
-      alert(`Please use a valid date format.
-      (YYYY/MM/DD); or
-      (YYYY/MM/DD - YYYY/MM/DD)`);
-      return;
-    };
+    // if(dateRange === '' || !validFormat.test(dateRange)){
+    //   this.setState({...this.state, queryData: []});
+    //   alert(`Please use a valid date format.
+    //   (YYYY/MM/DD); or
+    //   (YYYY/MM/DD - YYYY/MM/DD)`);
+    //   return;
+    // };
 
     // Single Date Queries
     if(queryInput.length === 1){
