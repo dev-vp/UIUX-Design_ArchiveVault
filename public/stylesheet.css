@@ -37,19 +37,19 @@ body {
   text-align: center;
 }
 
-#search-box {
+.search-box {
   border-radius: 5px;
   border: none;
   outline: none;
   margin: 0px;
-  width: 11em;
+  width: 5em;
   height: 90%;
   background-color: transparent;
   padding-left: 5px;
   font-size: 12px;
 }
 
-#search-box::placeholder {
+.search-box::placeholder {
   color: lightgray;
 }
 

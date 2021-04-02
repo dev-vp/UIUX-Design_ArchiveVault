@@ -1,16 +1,24 @@
 import React from 'react';
+import currDate from '../../utils/currentDate';
 
 class Header extends React.Component {
   constructor(){
     super()
     this.state = {
-      dateRange: '',
+      startDate: '',
+      endDate: currDate(),
+      dateRange: ''
     };
   };
 
   handleChange(e){
     e.preventDefault();
-    this.setState({[e.target.name]: e.target.value});
+
+    this.setState({
+      ...this.state,
+      [e.target.name]: e.target.value,
+      dateRange: `${this.state.startDate.replace(/-/g,'/')}-${this.state.endDate.replace(/-/g,'/')}`
+    });
   };
 
   render() {
@@ -19,7 +27,8 @@ class Header extends React.Component {
       <div id='header'>
         <form id='search-form' onSubmit={(e) => handleSubmit(e, this.state.dateRange)}>
           <img id='icon-calender' className='icons' src='assets/icon_calender.svg' />
-          <input type='daterange' id='search-box' placeholder='YYYY/MM/DD' name='dateRange' onChange={e => this.handleChange(e)} />
+          <input type='date' className='search-box' placeholder='YYYY/MM/DD' name='startDate' onChange={e => this.handleChange(e)} />
+          <input type='date' className='search-box' placeholder='YYYY/MM/DD' name='endDate' onChange={e => this.handleChange(e)} />
           <button type='button' id='search-button' onClick={(e) => handleSubmit(e, this.state.dateRange)}>
             <img id='icon-search' className='icons' src='assets/icon_search.svg' />
           </button>
