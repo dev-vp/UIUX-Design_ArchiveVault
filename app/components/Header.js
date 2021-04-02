@@ -1,13 +1,14 @@
 import React from 'react';
-import currDate from '../../utils/currentDate';
+import currentDate from '../../utils/currentDate';
+import defaultDate from '../../utils/defaultDate';
 
 class Header extends React.Component {
   constructor(){
     super()
     this.state = {
-      startDate: '',
-      endDate: currDate(),
-      dateRange: ''
+      startDate: defaultDate(),
+      endDate: currentDate(),
+      dateRange: 'all'
     };
   };
 
