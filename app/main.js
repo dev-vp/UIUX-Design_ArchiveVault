@@ -43,10 +43,6 @@ class Main extends React.Component{
         this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
         toggleFilterIcon(e, 'desc')
       }
-      // this.state.filterTo === 'asc' ?
-      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
-      // this.setState({...this.state, filterTo: 'asc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'});
-      // this.state.filterTo === 'asc' ? this.state.queryData.sort((a,b) => sortChar(a,b,'asc')) : this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
     };
     if(e.target.id === 'from'){
       if(this.state.filterFrom === 'asc'){
@@ -58,10 +54,6 @@ class Main extends React.Component{
         this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
         toggleFilterIcon(e, 'desc')
       }
-      // this.state.filterFrom === 'asc' ?
-      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
-      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'asc', filterSubject: 'desc', filterDate: 'desc'});
-      // this.state.filterFrom === 'asc' ? this.state.queryData.sort((a,b) => sortChar(a,b,'asc')) : this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
     };
     if(e.target.id === 'subject'){
       if(this.state.filterSubject === 'asc'){
@@ -73,10 +65,6 @@ class Main extends React.Component{
         this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
         toggleFilterIcon(e, 'desc')
       }
-      // this.state.filterSubject === 'asc' ?
-      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
-      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'asc', filterDate: 'desc'});
-      // this.state.filterSubject === 'asc' ? this.state.queryData.sort((a,b) => sortChar(a,b,'asc')) : this.state.queryData.sort((a,b) => sortChar(a,b,'desc'))
     };
     if(e.target.id === 'date'){
       if(this.state.filterDate === 'asc'){
@@ -88,10 +76,6 @@ class Main extends React.Component{
         this.state.queryData.sort((a,b) => sortDate(a,b,'asc'))
         toggleFilterIcon(e, 'desc')
       }
-      // this.state.filterDate === 'asc' ?
-      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'desc'}) :
-      // this.setState({...this.state, filterTo: 'desc', filterFrom: 'desc', filterSubject: 'desc', filterDate: 'asc'});
-      // this.state.filterDate === 'asc' ? this.state.queryData.sort((a,b) => sortDate(a,b,'desc')) : this.state.queryData.sort((a,b) => sortDate(a,b,'asc'));
     };
   };
 
@@ -102,22 +86,8 @@ class Main extends React.Component{
     const queryInput = dateRange.match(validFormat);
     let startDate, endDate;
 
-    if(dateRange === 'ALL' || dateRange === 'all' || dateRange === 'All'){
-      this.setState({...this.state, queryData: this.props.data});
-      return;
-    }
-
-    // Empty Query & Invalid Date Formats
-    // if(dateRange === '' || !validFormat.test(dateRange)){
-    //   this.setState({...this.state, queryData: []});
-    //   alert(`Please use a valid date format.
-    //   (YYYY/MM/DD); or
-    //   (YYYY/MM/DD - YYYY/MM/DD)`);
-    //   return;
-    // };
-
     // Single Date Queries
-    if(queryInput.length === 1){
+    if(queryInput[1] === undefined){
       startDate = new Date(
         ...(queryInput[0].split('/').map((x, idx) => {
             if(idx === 1){
@@ -158,6 +128,7 @@ class Main extends React.Component{
           };
         }))
       );
+
       //Check for valid date range
      if(startDate.getTime() > endDate.getTime()){
        alert(`Invalid Date Range.
