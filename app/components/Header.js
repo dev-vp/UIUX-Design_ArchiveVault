@@ -1,14 +1,14 @@
 import React from 'react';
 import currentDate from '../../utils/currentDate';
 import defaultDate from '../../utils/defaultDate';
-import {QueryOptions} from './index';
 
 class Header extends React.Component {
   constructor(){
     super()
     this.state = {
       startDate: defaultDate(),
-      endDate: currentDate()
+      endDate: currentDate(),
+      toggle: 0
     };
     this.toggleQueryType = this.toggleQueryType.bind(this);
   };
@@ -28,16 +28,35 @@ class Header extends React.Component {
   }
 
   toggleQueryType(){
-    const targetNode = document.getElementById('endDate');
+    const targetNode1 = document.getElementById('startDate');
+    const targetNode2 = document.getElementById('endDate');
 
-    if(!targetNode.disabled){
-      targetNode.disabled = true;
-      targetNode.style.backgroundColor = 'gray';
-      this.setState({...this.state, endDate: ''})
+    // if(!targetNode.disabled){
+    //   targetNode.disabled = true;
+    //   targetNode.style.backgroundColor = 'gray';
+    //   this.setState({...this.state, endDate: ''})
+    // } else {
+    //   targetNode.style.backgroundColor = 'rgba(255,0,0,0.098)';
+    //   targetNode.disabled = false;
+    //   this.setState({...this.state, endDate: currentDate()})
+    // }
+
+    if (this.state.toggle === 0){
+      targetNode2.disabled = true;
+      targetNode2.style.backgroundColor = 'gray';
+      this.setState({...this.state, endDate: '', toggle: 1});
+    } else if (this.state.toggle === 1){
+      targetNode1.disabled = true;
+      targetNode1.style.backgroundColor = 'gray';
+      targetNode2.disabled = true;
+      targetNode2.style.backgroundColor = 'gray';
+      this.setState({...this.state, startDate: 'all', endDate: '', toggle: 2});
     } else {
-      targetNode.style.backgroundColor = 'rgba(255,0,0,0.098)';
-      targetNode.disabled = false;
-      this.setState({...this.state, endDate: currentDate()})
+      targetNode1.style.backgroundColor = 'rgba(0,128,0,0.098)';
+      targetNode1.disabled = false;
+      targetNode2.style.backgroundColor = 'rgba(255,0,0,0.098)';
+      targetNode2.disabled = false;
+      this.setState({...this.state, startDate: defaultDate(), endDate: currentDate(), toggle: 0})
     }
   }
 

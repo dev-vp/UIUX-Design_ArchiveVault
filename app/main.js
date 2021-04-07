@@ -86,6 +86,12 @@ class Main extends React.Component{
     const queryInput = dateRange.match(validFormat);
     let startDate, endDate;
 
+    // All Records
+    if(!parseInt(dateRange)){
+      this.setState({...this.state, queryData: this.props.data});
+      return;
+    }
+
     // Single Date Queries
     if(queryInput[1] === undefined){
       startDate = new Date(
