@@ -3,6 +3,18 @@
   --column-width-subject: 500px;
 }
 
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 /* ************* */
 /* GLOBAL STYLES */
 /* ************* */
@@ -65,15 +77,15 @@ body {
   background-color: rgba(255, 0, 0, 0.098);
 }
 
-/* .search-box::-webkit-inner-spin-button,
+.search-box::-webkit-inner-spin-button,
 .search-box::-webkit-calendar-picker-indicator {
-  display:none;
-  -webkit-appearance: none;
-} */
+  cursor: pointer;
+}
 
 #icon-calender {
   float: left;
   margin: 5.5px 0px 5.5px 8px;
+  cursor: pointer;
 }
 
 #search-button {
@@ -322,4 +334,11 @@ body {
     right: 45px;
     margin-top: 4px;
   }
+}
+
+/* ********** */
+/* ANIMATIONS */
+/* ********** */
+#toggle-message {
+  animation: fade 6s;
 }
