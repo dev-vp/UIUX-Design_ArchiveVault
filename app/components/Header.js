@@ -1,14 +1,14 @@
 import React from 'react';
 import currentDate from '../../utils/currentDate';
 import defaultDate from '../../utils/defaultDate';
-import {QueryOptions} from './index';
 
 class Header extends React.Component {
   constructor(){
     super()
     this.state = {
       startDate: defaultDate(),
-      endDate: currentDate()
+      endDate: currentDate(),
+      toggle: 0
     };
     this.toggleQueryType = this.toggleQueryType.bind(this);
   };
@@ -28,16 +28,47 @@ class Header extends React.Component {
   }
 
   toggleQueryType(){
-    const targetNode = document.getElementById('endDate');
+    const targetNode1 = document.getElementById('startDate');
+    const targetNode2 = document.getElementById('endDate');
 
-    if(!targetNode.disabled){
-      targetNode.disabled = true;
-      targetNode.style.backgroundColor = 'gray';
-      this.setState({...this.state, endDate: ''})
+    const cleanUp = document.getElementById('toggle-message');
+    if (cleanUp){
+      document.getElementById('toggle-message').remove();
+    }
+
+    const root = document.getElementById('app');
+    const toggleMessage = document.createElement('p');
+    toggleMessage.id = 'toggle-message';
+    toggleMessage.style.position = 'fixed';
+    toggleMessage.style.top = '60px';
+    toggleMessage.style.right = '46px';
+    toggleMessage.style.color = 'red';
+    toggleMessage.style.fontWeight = 'bold';
+    toggleMessage.style.fontSize = '13px';
+    toggleMessage.style.opacity = '0';
+
+    if (this.state.toggle === 0){
+      targetNode2.disabled = true;
+      targetNode2.style.backgroundColor = 'gray';
+      this.setState({...this.state, endDate: '', toggle: 1});
+      toggleMessage.innerText = 'Search By Single Date';
+      root.appendChild(toggleMessage);
+    } else if (this.state.toggle === 1){
+      targetNode1.disabled = true;
+      targetNode1.style.backgroundColor = 'gray';
+      targetNode2.disabled = true;
+      targetNode2.style.backgroundColor = 'gray';
+      this.setState({...this.state, startDate: 'all', endDate: '', toggle: 2});
+      toggleMessage.innerText = 'Return All Records';
+      root.appendChild(toggleMessage);
     } else {
-      targetNode.style.backgroundColor = 'rgba(255,0,0,0.098)';
-      targetNode.disabled = false;
-      this.setState({...this.state, endDate: currentDate()})
+      targetNode1.style.backgroundColor = 'rgba(0,128,0,0.098)';
+      targetNode1.disabled = false;
+      targetNode2.style.backgroundColor = 'rgba(255,0,0,0.098)';
+      targetNode2.disabled = false;
+      this.setState({...this.state, startDate: defaultDate(), endDate: currentDate(), toggle: 0});
+      toggleMessage.innerText = 'Search by Date Range';
+      root.appendChild(toggleMessage);
     }
   }
 
